@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        let oBox = document.getElementById("box")
+        // 是用来检测DOM的更新变化 然后触发这个事件  是当所有的dom更新完毕才触发一次，并不是
+        // 每次DOM更新都会触发，
+        /**
+         * MutationObserver
+         * 这样设计是为了应付 DOM 变动频繁的特点。举例来说，如果文档中连续插入1000个<p>元素，就会连续触发1000个插入事件，
+         * 执行每个事件的回调函数，
+         * 这很可能造成浏览器的卡顿；而 Mutation Observer 完全不同，只在1000个段落都插入结束后才会触发，而且只触发一次。
+         */ 
+        let observer = new MutationObserver(function(){
+            console.log("节点已经更新")
+            console.log(oBox.children.length)
+        })
+        // 检测DOM节点oBox的变化
+        observer.observe(oBox,{
+            childList:true // 监听子节点的变化
+        })
+        for(let i=0;i<20;i++){
+            oBox.appendChild(document.createElement("span"))
+        }
+        for(let i=0;i<20;i++){
+            oBox.appendChild(document.createElement("p"))
+        }
+
+    </script>
+</body>
+</html>
