@@ -8,17 +8,26 @@
 </head>
 <body>
     <script>
-         setTimeout(function(){
-            console.log("timeout")
-        },0)
-        // setImmediate(function(){
-        //     console.log("setImmediate")
-        // })
+        //  setTimeout(function(){
+        //     console.log("timeout")
+        // },0)
+        // // setImmediate(function(){
+        // //     console.log("setImmediate")
+        // // })
        
-        console.log("开始了")
-        // Promise.resolve().then(()=>{
-        //     console.log("promise")
-        // })
+        // console.log("开始了")
+        // // Promise.resolve().then(()=>{
+        // //     console.log("promise")
+        // // })
+
+        function cat(name, age, score){
+            this.name = name;
+            this.age = age;
+            this.score = score;
+        }
+        var c = new cat("miao", 2, [6,8,7]);
+        console.log(c);
+        console.dir(c);
 
     </script>
 </body>
